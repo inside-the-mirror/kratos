@@ -11,16 +11,16 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/gen"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/naming"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/typemap"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/utils"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
-	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"github.com/pkg/errors"
 )
 
-const Version = "v0.1"
+const Version = "v0.2"
 
 var GoModuleImportPath = "github.com/inside-the-mirror/kratos"
 var GoModuleDirName = "github.com/inside-the-mirror/kratos"

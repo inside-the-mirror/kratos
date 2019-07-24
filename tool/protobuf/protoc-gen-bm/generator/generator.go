@@ -6,14 +6,14 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/protoc-gen-go/descriptor"
+	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/generator"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/naming"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/tag"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/typemap"
 	"github.com/inside-the-mirror/kratos/tool/protobuf/pkg/utils"
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/protoc-gen-go/descriptor"
-	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 )
 
 type bm struct {
