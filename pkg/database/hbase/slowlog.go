@@ -6,7 +6,7 @@ import (
 
 	"github.com/tsuna/gohbase/hrpc"
 
-	"github.com/bilibili/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/log"
 )
 
 // NewSlowLogHook log slow operation.

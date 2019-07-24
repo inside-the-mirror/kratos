@@ -74,8 +74,8 @@ import (
 
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/log"
 )
 
 func main() {
@@ -125,8 +125,8 @@ import (
 	"{{.ModuleName}}/internal/server/grpc"
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/log"
 )
 
 func main() {
@@ -181,12 +181,12 @@ import (
 	"context"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/cache/memcache"
-	"github.com/bilibili/kratos/pkg/cache/redis"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/database/sql"
-	"github.com/bilibili/kratos/pkg/log"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/inside-the-mirror/kratos/pkg/cache/memcache"
+	"github.com/inside-the-mirror/kratos/pkg/cache/redis"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/database/sql"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 )
 
 // Dao dao interface
@@ -285,7 +285,7 @@ import (
 	"context"
 
 	"{{.ModuleName}}/internal/dao"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
 )
 
 // Service service.
@@ -326,7 +326,7 @@ import (
 
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/dao"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
 
 	"github.com/golang/protobuf/ptypes/empty"
 )
@@ -384,9 +384,9 @@ import (
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/log"
-	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	bm "github.com/inside-the-mirror/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -446,9 +446,9 @@ import (
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/log"
-	bm "github.com/bilibili/kratos/pkg/net/http/blademaster"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	bm "github.com/inside-the-mirror/kratos/pkg/net/http/blademaster"
 )
 
 var (
@@ -547,7 +547,7 @@ type Kratos struct {
 go 1.12
 
 require (
-	github.com/bilibili/kratos v0.1.0
+	github.com/inside-the-mirror/kratos v0.1.0
 	github.com/gogo/protobuf v1.2.1
 	github.com/golang/protobuf v1.3.1
 	golang.org/x/net v0.0.0-20190420063019-afa5a82059c6
@@ -575,8 +575,8 @@ replace (
 import (
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/service"
-	"github.com/bilibili/kratos/pkg/conf/paladin"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden"
+	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/net/rpc/warden"
 )
 
 // New new a grpc server.

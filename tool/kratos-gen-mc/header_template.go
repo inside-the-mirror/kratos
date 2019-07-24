@@ -19,10 +19,10 @@ import (
 	{{if .UseStrConv}}"strconv"{{end}}
 	{{if .EnableBatch }}"sync"{{end}}
 NEWLINE
-	"github.com/bilibili/kratos/pkg/stat/prom"
-	{{if .UseMemcached }}"github.com/bilibili/kratos/pkg/cache/memcache"{{end}}
-	{{if .EnableBatch }}"github.com/bilibili/kratos/pkg/sync/errgroup"{{end}}
-	"github.com/bilibili/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/stat/prom"
+	{{if .UseMemcached }}"github.com/inside-the-mirror/kratos/pkg/cache/memcache"{{end}}
+	{{if .EnableBatch }}"github.com/inside-the-mirror/kratos/pkg/sync/errgroup"{{end}}
+	"github.com/inside-the-mirror/kratos/pkg/log"
 	{{.ImportPackage}}
 )
 

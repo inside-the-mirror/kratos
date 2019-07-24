@@ -13,13 +13,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/conf/dsn"
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/criticality"
-	"github.com/bilibili/kratos/pkg/net/ip"
-	"github.com/bilibili/kratos/pkg/net/metadata"
-	"github.com/bilibili/kratos/pkg/stat"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/inside-the-mirror/kratos/pkg/conf/dsn"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/net/criticality"
+	"github.com/inside-the-mirror/kratos/pkg/net/ip"
+	"github.com/inside-the-mirror/kratos/pkg/net/metadata"
+	"github.com/inside-the-mirror/kratos/pkg/stat"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 
 	"github.com/pkg/errors"
 )

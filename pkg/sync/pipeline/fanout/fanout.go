@@ -6,10 +6,10 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/bilibili/kratos/pkg/log"
-	"github.com/bilibili/kratos/pkg/net/metadata"
-	"github.com/bilibili/kratos/pkg/net/trace"
-	"github.com/bilibili/kratos/pkg/stat/prom"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	"github.com/inside-the-mirror/kratos/pkg/net/metadata"
+	"github.com/inside-the-mirror/kratos/pkg/net/trace"
+	"github.com/inside-the-mirror/kratos/pkg/stat/prom"
 )
 
 var (

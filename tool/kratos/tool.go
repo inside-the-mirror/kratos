@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	toolDoc = "https://github.com/bilibili/kratos/blob/master/doc/wiki-cn/kratos-tool.md"
+	toolDoc = "https://github.com/inside-the-mirror/kratos/blob/master/doc/wiki-cn/kratos-tool.md"
 )
 
 func toolAction(c *cli.Context) (err error) {

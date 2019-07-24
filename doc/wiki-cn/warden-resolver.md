@@ -119,9 +119,9 @@ package dao
 import (
 	"context"
 
-	"github.com/bilibili/kratos/pkg/naming/discovery"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden"
-	"github.com/bilibili/kratos/pkg/net/rpc/warden/resolver"
+	"github.com/inside-the-mirror/kratos/pkg/naming/discovery"
+	"github.com/inside-the-mirror/kratos/pkg/net/rpc/warden"
+	"github.com/inside-the-mirror/kratos/pkg/net/rpc/warden/resolver"
 
 	"google.golang.org/grpc"
 )

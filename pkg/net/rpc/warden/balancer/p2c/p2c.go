@@ -9,11 +9,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/conf/env"
+	"github.com/inside-the-mirror/kratos/pkg/conf/env"
 
-	"github.com/bilibili/kratos/pkg/log"
-	nmd "github.com/bilibili/kratos/pkg/net/metadata"
-	wmd "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/metadata"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	nmd "github.com/inside-the-mirror/kratos/pkg/net/metadata"
+	wmd "github.com/inside-the-mirror/kratos/pkg/net/rpc/warden/internal/metadata"
 
 	"google.golang.org/grpc/balancer"
 	"google.golang.org/grpc/balancer/base"
