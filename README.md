@@ -2,8 +2,8 @@
 
 [![Language](https://img.shields.io/badge/Language-Go-blue.svg)](https://golang.org/)
 [![Build Status](https://travis-ci.org/bilibili/kratos.svg?branch=master)](https://travis-ci.org/bilibili/kratos)
-[![GoDoc](https://godoc.org/github.com/bilibili/kratos?status.svg)](https://godoc.org/github.com/bilibili/kratos)
-[![Go Report Card](https://goreportcard.com/badge/github.com/bilibili/kratos)](https://goreportcard.com/report/github.com/bilibili/kratos)
+[![GoDoc](https://godoc.org/github.com/inside-the-mirror/kratos?status.svg)](https://godoc.org/github.com/inside-the-mirror/kratos)
+[![Go Report Card](https://goreportcard.com/badge/github.com/inside-the-mirror/kratos)](https://goreportcard.com/report/github.com/inside-the-mirror/kratos)
 
 # Kratos
 
@@ -33,12 +33,12 @@ Go version>=1.12 and GO111MODULE=on
 
 ### Installation
 ```shell
-go get -u github.com/bilibili/kratos/tool/kratos
+go get -u github.com/inside-the-mirror/kratos/tool/kratos
 cd $GOPATH/src
 kratos new kratos-demo
 ```
 
-通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/bilibili/kratos-demo) 
+通过 `kratos new` 会快速生成基于kratos库的脚手架代码，如生成 [kratos-demo](https://github.com/inside-the-mirror/kratos-demo) 
 
 ### Build & Run
 

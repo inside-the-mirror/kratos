@@ -6,13 +6,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/container/group"
-	"github.com/bilibili/kratos/pkg/ecode"
-	"github.com/bilibili/kratos/pkg/log"
-	limit "github.com/bilibili/kratos/pkg/ratelimit"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/inside-the-mirror/kratos/pkg/container/group"
+	"github.com/inside-the-mirror/kratos/pkg/ecode"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	limit "github.com/inside-the-mirror/kratos/pkg/ratelimit"
+	"github.com/inside-the-mirror/kratos/pkg/stat/metric"
 
-	cpustat "github.com/bilibili/kratos/pkg/stat/sys/cpu"
+	cpustat "github.com/inside-the-mirror/kratos/pkg/stat/sys/cpu"
 )
 
 var (

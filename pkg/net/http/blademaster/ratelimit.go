@@ -5,10 +5,10 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/log"
-	limit "github.com/bilibili/kratos/pkg/ratelimit"
-	"github.com/bilibili/kratos/pkg/ratelimit/bbr"
-	"github.com/bilibili/kratos/pkg/stat/prom"
+	"github.com/inside-the-mirror/kratos/pkg/log"
+	limit "github.com/inside-the-mirror/kratos/pkg/ratelimit"
+	"github.com/inside-the-mirror/kratos/pkg/ratelimit/bbr"
+	"github.com/inside-the-mirror/kratos/pkg/stat/prom"
 )
 
 const (

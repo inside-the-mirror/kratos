@@ -8,10 +8,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/conf/env"
-	nmd "github.com/bilibili/kratos/pkg/net/metadata"
-	wmeta "github.com/bilibili/kratos/pkg/net/rpc/warden/internal/metadata"
-	"github.com/bilibili/kratos/pkg/stat/metric"
+	"github.com/inside-the-mirror/kratos/pkg/conf/env"
+	nmd "github.com/inside-the-mirror/kratos/pkg/net/metadata"
+	wmeta "github.com/inside-the-mirror/kratos/pkg/net/rpc/warden/internal/metadata"
+	"github.com/inside-the-mirror/kratos/pkg/stat/metric"
 
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/grpc/balancer"

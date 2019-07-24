@@ -8,7 +8,7 @@ import (
 	"github.com/tsuna/gohbase"
 	"github.com/tsuna/gohbase/hrpc"
 
-	"github.com/bilibili/kratos/pkg/stat"
+	"github.com/inside-the-mirror/kratos/pkg/stat"
 )
 
 func codeFromErr(err error) string {

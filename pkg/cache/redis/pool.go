@@ -25,9 +25,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/bilibili/kratos/pkg/container/pool"
-	"github.com/bilibili/kratos/pkg/net/trace"
-	xtime "github.com/bilibili/kratos/pkg/time"
+	"github.com/inside-the-mirror/kratos/pkg/container/pool"
+	"github.com/inside-the-mirror/kratos/pkg/net/trace"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 )
 
 var beginTime, _ = time.Parse("2006-01-02 15:04:05", "2006-01-02 15:04:05")

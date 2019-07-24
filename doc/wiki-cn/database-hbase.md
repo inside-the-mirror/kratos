@@ -18,7 +18,7 @@ import (
 	"context"
 	"fmt"
     
-    "github.com/bilibili/kratos/pkg/database/hbase"
+    "github.com/inside-the-mirror/kratos/pkg/database/hbase"
 )
 
 func main() {
