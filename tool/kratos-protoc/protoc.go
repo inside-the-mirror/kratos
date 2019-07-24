@@ -93,7 +93,7 @@ func generate(ctx *cli.Context, protoc string) error {
 		return err
 	}
 	line := fmt.Sprintf(protoc, gosrc, ext, pwd)
-	log.Println(line, strings.Join(ctx.Args(), " "))
+	//log.Println(line, strings.Join(ctx.Args(), " "))
 	args := strings.Split(line, " ")
 	args = append(args, ctx.Args()...)
 	cmd := exec.Command(args[0], args[1:]...)
