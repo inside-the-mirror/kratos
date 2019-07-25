@@ -1,6 +1,21 @@
 package main
 
 const (
+	_tplDotEnv = `
+# Application
+APP_ID=1000
+GROUP=1000
+
+# GRPC
+GRPC_ADDR=0.0.0.0:9000
+GRPC_TIMEOUT=1s
+
+# HTTP
+HTTP_ADDR=0.0.0.0:8000
+HTTP_TIMEOUT=1s
+
+# DB todo
+	`
 	_tplAppToml = `
 # This is a TOML document. Boom~
 `
@@ -74,13 +89,13 @@ import (
 
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/dotenv"
 	"github.com/inside-the-mirror/kratos/pkg/log"
 )
 
 func main() {
 	flag.Parse()
-	if err := paladin.Init(); err != nil {
+	if err := dotenv.Init(); err != nil {
 		panic(err)
 	}
 	log.Init(nil) // debug flag: log.dir={path}
@@ -125,13 +140,13 @@ import (
 	"{{.ModuleName}}/internal/server/grpc"
 	"{{.ModuleName}}/internal/server/http"
 	"{{.ModuleName}}/internal/service"
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/dotenv"
 	"github.com/inside-the-mirror/kratos/pkg/log"
 )
 
 func main() {
 	flag.Parse()
-	if err := paladin.Init(); err != nil {
+	if err := dotenv.Init(); err != nil {
 		panic(err)
 	}
 	log.Init(nil) // debug flag: log.dir={path}
@@ -283,38 +298,25 @@ func (d *dao) pingRedis(ctx context.Context) (err error) {
 
 import (
 	"context"
-
-	"{{.ModuleName}}/internal/dao"
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
 )
 
 // Service service.
 type Service struct {
-	ac  *paladin.Map
-	dao dao.Dao
 }
 
 // New new a service and return.
 func New() (s *Service) {
-	var ac = new(paladin.TOML)
-	if err := paladin.Watch("application.toml", ac); err != nil {
-		panic(err)
-	}
-	s = &Service{
-		ac:  ac,
-		dao: dao.New(),
-	}
+	s = &Service{}
 	return s
 }
 
 // Ping ping the resource.
 func (s *Service) Ping(ctx context.Context) (err error) {
-	return s.dao.Ping(ctx)
+	return nil
 }
 
 // Close close the resource.
 func (s *Service) Close() {
-	s.dao.Close()
 }
 `
 
@@ -325,28 +327,17 @@ import (
 	"fmt"
 
 	pb "{{.ModuleName}}/api"
-	"{{.ModuleName}}/internal/dao"
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
 
 	"github.com/golang/protobuf/ptypes/empty"
 )
 
 // Service service.
 type Service struct {
-	ac  *paladin.Map
-	dao dao.Dao
 }
 
 // New new a service and return.
 func New() (s *Service) {
-	var ac = new(paladin.TOML)
-	if err := paladin.Watch("application.toml", ac); err != nil {
-		panic(err)
-	}
-	s = &Service{
-		ac:  ac,
-		dao: dao.New(),
-	}
+	s = &Service{}
 	return s
 }
 
@@ -368,25 +359,27 @@ func (s *Service) SayHelloURL(ctx context.Context, req *pb.HelloReq) (reply *pb.
 
 // Ping ping the resource.
 func (s *Service) Ping(ctx context.Context) (err error) {
-	return s.dao.Ping(ctx)
+	return nil
 }
 
 // Close close the resource.
 func (s *Service) Close() {
-	s.dao.Close()
 }
 `
 	_tplHTTPServer = `package http
 
 import (
 	"net/http"
+	"strconv"
 
+	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/dotenv"
 	"github.com/inside-the-mirror/kratos/pkg/log"
 	bm "github.com/inside-the-mirror/kratos/pkg/net/http/blademaster"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 )
 
 var (
@@ -400,10 +393,13 @@ func New(s *service.Service) (engine *bm.Engine) {
 			Server *bm.ServerConfig
 		}
 	)
-	if err := paladin.Get("http.toml").UnmarshalTOML(&hc); err != nil {
-		if err != paladin.ErrNotExist {
-			panic(err)
-		}
+	timeout, e := strconv.Atoi(dotenv.Get("HTTP_TIMEOUT"))
+	if e != nil {
+		timeout = 1
+	}
+	hc.Server = &bm.ServerConfig{
+		Addr:    dotenv.Get("HTTP_ADDR"),
+		Timeout: xtime.Duration(timeout),
 	}
 	svc = s
 	engine = bm.DefaultServer(hc.Server)
@@ -427,6 +423,7 @@ func ping(ctx *bm.Context) {
 		log.Error("ping error(%v)", err)
 		ctx.AbortWithStatus(http.StatusServiceUnavailable)
 	}
+	ctx.JSON("pong", nil)
 }
 
 // example for http request handler.
@@ -441,14 +438,16 @@ func howToStart(c *bm.Context) {
 
 import (
 	"net/http"
+	"strconv"
 
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/model"
 	"{{.ModuleName}}/internal/service"
 
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+	"github.com/inside-the-mirror/kratos/pkg/conf/dotenv"
 	"github.com/inside-the-mirror/kratos/pkg/log"
 	bm "github.com/inside-the-mirror/kratos/pkg/net/http/blademaster"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 )
 
 var (
@@ -462,10 +461,13 @@ func New(s *service.Service) (engine *bm.Engine) {
 			Server *bm.ServerConfig
 		}
 	)
-	if err := paladin.Get("http.toml").UnmarshalTOML(&hc); err != nil {
-		if err != paladin.ErrNotExist {
-			panic(err)
-		}
+	timeout, e := strconv.Atoi(dotenv.Get("HTTP_TIMEOUT"))
+	if e != nil {
+		timeout = 1
+	}
+	hc.Server = &bm.ServerConfig{
+		Addr:    dotenv.Get("HTTP_ADDR"),
+		Timeout: xtime.Duration(timeout),
 	}
 	svc = s
 	engine = bm.DefaultServer(hc.Server)
@@ -490,6 +492,7 @@ func ping(ctx *bm.Context) {
 		log.Error("ping error(%v)", err)
 		ctx.AbortWithStatus(http.StatusServiceUnavailable)
 	}
+	ctx.JSON("pong", nil)
 }
 
 // example for http request handler.
@@ -573,10 +576,13 @@ replace (
 	_tplGRPCServer = `package grpc
 
 import (
+	"strconv"
 	pb "{{.ModuleName}}/api"
 	"{{.ModuleName}}/internal/service"
-	"github.com/inside-the-mirror/kratos/pkg/conf/paladin"
+
+	"github.com/inside-the-mirror/kratos/pkg/conf/dotenv"
 	"github.com/inside-the-mirror/kratos/pkg/net/rpc/warden"
+	xtime "github.com/inside-the-mirror/kratos/pkg/time"
 )
 
 // New new a grpc server.
@@ -584,10 +590,13 @@ func New(svc *service.Service) *warden.Server {
 	var rc struct {
 		Server *warden.ServerConfig
 	}
-	if err := paladin.Get("grpc.toml").UnmarshalTOML(&rc); err != nil {
-		if err != paladin.ErrNotExist {
-			panic(err)
-		}
+	timeout, e := strconv.Atoi(dotenv.Get("GRPC_TIMEOUT"))
+	if e != nil {
+		timeout = 1
+	}
+	rc.Server = &warden.ServerConfig{
+		Addr:    dotenv.Get("GRPC_ADDR"),
+		Timeout: xtime.Duration(timeout),
 	}
 	ws := warden.NewServer(rc.Server)
 	pb.RegisterDemoServer(ws.Server(), svc)

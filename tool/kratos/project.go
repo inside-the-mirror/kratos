@@ -38,6 +38,7 @@ const (
 	_tplTypeGRPCServer
 	_tplTypeGomod
 	_tplTypeAPIGogen
+	_tplTypeDotEnv
 )
 
 var (
@@ -56,12 +57,13 @@ var (
 		_tplTypeService:    "/internal/service/service.go",
 		_tplTypeModel:      "/internal/model/model.go",
 		// init config
-		_tplTypeAppToml:   "/configs/application.toml",
-		_tplTypeMySQLToml: "/configs/mysql.toml",
-		_tplTypeMCToml:    "/configs/memcache.toml",
-		_tplTypeRedisToml: "/configs/redis.toml",
-		_tplTypeHTTPToml:  "/configs/http.toml",
-		_tplTypeGRPCToml:  "/configs/grpc.toml",
+		// _tplTypeAppToml:   "/configs/application.toml",
+		// _tplTypeMySQLToml: "/configs/mysql.toml",
+		// _tplTypeMCToml:    "/configs/memcache.toml",
+		// _tplTypeRedisToml: "/configs/redis.toml",
+		// _tplTypeHTTPToml: "/configs/http.toml",
+		// _tplTypeGRPCToml: "/configs/grpc.toml",
+		_tplTypeDotEnv: "/.env.example",
 	}
 	// tpls type => content
 	tpls = map[int]string{
@@ -73,14 +75,15 @@ var (
 		_tplTypeChangeLog:    _tplChangeLog,
 		_tplTypeContributors: _tplContributors,
 		_tplTypeReadme:       _tplReadme,
-		_tplTypeMySQLToml:    _tplMySQLToml,
-		_tplTypeMCToml:       _tplMCToml,
-		_tplTypeRedisToml:    _tplRedisToml,
-		_tplTypeAppToml:      _tplAppToml,
-		_tplTypeHTTPToml:     _tplHTTPToml,
-		_tplTypeModel:        _tplModel,
-		_tplTypeGomod:        _tplGoMod,
-		_tplTypeAPIGogen:     _tplGogen,
+		// _tplTypeMySQLToml:    _tplMySQLToml,
+		// _tplTypeMCToml:       _tplMCToml,
+		// _tplTypeRedisToml:    _tplRedisToml,
+		// _tplTypeAppToml:      _tplAppToml,
+		// _tplTypeHTTPToml: _tplHTTPToml,
+		_tplTypeModel:    _tplModel,
+		_tplTypeGomod:    _tplGoMod,
+		_tplTypeAPIGogen: _tplGogen,
+		_tplTypeDotEnv:   _tplDotEnv,
 	}
 )
 
@@ -91,7 +94,7 @@ func create() (err error) {
 		files[_tplTypeAPIGogen] = "/api/generate.go"
 		tpls[_tplTypeHTTPServer] = _tplPBHTTPServer
 		tpls[_tplTypeGRPCServer] = _tplGRPCServer
-		tpls[_tplTypeGRPCToml] = _tplGRPCToml
+		// tpls[_tplTypeGRPCToml] = _tplGRPCToml
 		tpls[_tplTypeService] = _tplGPRCService
 		tpls[_tplTypeMain] = _tplGRPCMain
 	}

@@ -3,8 +3,6 @@ package main
 import (
 	"os"
 	"os/exec"
-	"path"
-	"path/filepath"
 
 	"github.com/urfave/cli"
 )
@@ -15,8 +13,7 @@ func runAction(c *cli.Context) error {
 		panic(err)
 	}
 	dir := buildDir(base, "cmd", 5)
-	conf := path.Join(filepath.Dir(dir), "configs")
-	args := append([]string{"run", "main.go", "-conf", conf}, c.Args()...)
+	args := append([]string{"run", "main.go"}, c.Args()...)
 	cmd := exec.Command("go", args...)
 	cmd.Dir = dir
 	cmd.Stdout = os.Stdout

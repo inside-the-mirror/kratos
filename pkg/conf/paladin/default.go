@@ -21,7 +21,7 @@ func Init() (err error) {
 		DefaultClient, err = NewFile(confPath)
 	} else {
 		// TODO: Get the configuration from the remote service
-		panic("Please specify a file or dir name by -conf flag.")
+		// panic("Please specify a file or dir name by -conf flag.")
 	}
 	if err != nil {
 		return
